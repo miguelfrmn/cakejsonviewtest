@@ -10,13 +10,10 @@ class UsersController extends AppController {
     }
 
     public function beforeRender(\Cake\Event\Event $event) {
-
         parent::beforeRender($event);
-
-        if ($this->viewBuilder()->className() == 'null') {
+        if ($this->viewBuilder()->className() == null) {
             $this->viewBuilder()->className('App\View\AppView');
         }
-        
     }
     
     public function index()
