@@ -6,12 +6,17 @@ class UsersController extends AppController {
     public function initialize()
     {
         parent::initialize();
-        
-        // Uncommenting any of the following two lines prevent the JSON view from working
-        // $this->viewBuilder()->className('Cake\View\View');
-        // $this->viewBuilder()->className('App\View\AppView');
-
         $this->loadComponent('RequestHandler');
+    }
+
+    public function beforeRender(\Cake\Event\Event $event) {
+
+        parent::beforeRender($event);
+
+        if ($this->viewBuilder()->className() == 'null') {
+            $this->viewBuilder()->className('App\View\AppView');
+        }
+        
     }
     
     public function index()
